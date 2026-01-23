@@ -1,7 +1,7 @@
-import { cache, createAsync } from "@solidjs/router";
+import { query, createAsync } from "@solidjs/router";
 import { Show } from "solid-js";
 
-const fetchLatestRelease = cache(async () => {
+const fetchLatestRelease = query(async () => {
   const response = await fetch("https://api.github.com/repos/MugiSus/fontcluster/releases/latest");
   if (!response.ok) throw new Error("Failed to fetch latest release");
   return response.json();
@@ -57,8 +57,8 @@ export default function Home() {
       </div>
 
       <Show when={latestRelease()}>
-        <p class="mt-12 text-[11px] font-medium text-slate-400 dark:text-zinc-500 animate-in fade-in duration-1000 delay-500 uppercase tracking-widest">
-          Latest: <span class="font-mono bg-slate-200/50 dark:bg-zinc-800 px-2 py-0.5 rounded text-slate-600 dark:text-zinc-300">{latestRelease().tag_name}</span>
+        <p class="mt-12 text-[11px] font-medium text-slate-400 dark:text-zinc-500 animate-in fade-in duration-1000 delay-500">
+          Latest: <span class="font-mono bg-slate-200/50 dark:bg-zinc-800 px-1.5 py-1 rounded text-slate-600 dark:text-zinc-300">{latestRelease().tag_name}</span>
         </p>
       </Show>
     </main>
