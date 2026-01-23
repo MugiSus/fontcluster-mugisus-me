@@ -34,7 +34,7 @@ export default function Home() {
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase mb-1">Download</span>
               <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Apple Silicon</span>
-              <span class="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3</span>
+              <span class="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3, M4 series</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-blue-500 group-hover:text-white transition-colors duration-100">
               <AppleIcon size={24} />
@@ -48,7 +48,7 @@ export default function Home() {
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold text-emerald-500 dark:text-emerald-400 uppercase mb-1">Download</span>
               <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Intel Chip</span>
-              <span class="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">Older Mac models</span>
+              <span class="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">Other Mac models</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-100">
               <CpuIcon size={24} />
