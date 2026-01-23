@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   return (
-    <main class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-screen flex flex-col items-center justify-center">
+    <main class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-svh flex flex-col items-center justify-center">
       <div class="flex gap-4 items-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
         <img src="/fontcluster-icon.png" alt="Logo" class="w-24 h-24 drop-shadow-md" />
         <img src="/fontcluster-text.png" alt="FontCluster" class="h-12 dark:invert drop-shadow-md" />
