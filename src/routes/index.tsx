@@ -58,8 +58,8 @@ export default function Home() {
       </div>
 
       <Show when={latestRelease()}>
-        <p class="mt-12 text-[11px] font-medium text-slate-400 dark:text-zinc-500 animate-in fade-in duration-1000 delay-500">
-          Latest: <span class="font-mono bg-slate-200/50 dark:bg-zinc-800 px-1.5 py-1 rounded text-slate-600 dark:text-zinc-300">{latestRelease().tag_name}</span>
+        <p class="mt-16 text-xs font-medium text-slate-400 dark:text-zinc-500">
+          Latest: {latestRelease().tag_name}
         </p>
       </Show>
     </main>
