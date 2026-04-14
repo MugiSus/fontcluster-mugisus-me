@@ -1,6 +1,6 @@
 import { query, createAsync } from "@solidjs/router";
 import { Show } from "solid-js";
-import { AppleIcon, CpuIcon } from "lucide-solid";
+import { AppleIcon, ArrowRight, CpuIcon } from "lucide-solid";
 
 const fetchLatestRelease = query(async () => {
   const response = await fetch("https://api.github.com/repos/MugiSus/fontcluster/releases/latest");
@@ -34,7 +34,7 @@ export default function Home() {
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase mb-1">Download</span>
               <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Apple Silicon</span>
-              <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3, M4 series</span>
+              <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3, M4, M5 series</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-blue-500 group-hover:text-white transition-colors duration-100">
               <AppleIcon size={24} />
@@ -58,9 +58,15 @@ export default function Home() {
       </div>
 
       <Show when={latestRelease()}>
-        <p class="text-sm font-medium text-slate-400 dark:text-zinc-500">
-          latest:  {latestRelease().tag_name}
-        </p>
+        <div class="flex flex-col items-center text-sm font-medium text-slate-400 dark:text-zinc-500">
+          <p>
+            Latest: {latestRelease().tag_name}
+          </p>
+          <a href="https://github.com/MugiSus/fontcluster" class="flex items-center gap-0.5 ml-0.5">
+            <p>GitHub</p>
+            <ArrowRight size={14} strokeWidth={2.5} />
+          </a>
+        </div>
       </Show>
     </main>
   );
