@@ -32,16 +32,16 @@ export default function Home() {
             class="group w-full sm:w-1/2 flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
           >
             <div class="flex flex-col items-start text-left">
-              <span class="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase mb-1">Download</span>
+              <span class="text-[10px] font-bold uppercase mb-1">Download</span>
               <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Apple Silicon</span>
               <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3, M4, M5 series</span>
             </div>
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-blue-500 group-hover:text-white transition-colors duration-100">
+            <div class="p-3 rounded-lg bg-slate-50 dark:bg-zinc-700/50 text-zinc-700 dark:text-white group-hover:bg-zinc-700 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-zinc-700 transition-colors duration-300">
               <AppleIcon size={24} />
             </div>
           </a>
 
-          <a
+          {/* <a
             href={getDmgUrl("x64")}
             class="group w-full sm:w-1/2 flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
           >
@@ -53,18 +53,17 @@ export default function Home() {
             <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-100">
               <CpuIcon size={24} />
             </div>
-          </a>
+          </a> */}
         </Show>
       </div>
 
       <Show when={latestRelease()}>
         <div class="flex flex-col items-center text-sm font-medium text-slate-400 dark:text-zinc-500">
           <p>
-            Latest: {latestRelease().tag_name}
+            {latestRelease().tag_name}
           </p>
-          <a href="https://github.com/MugiSus/fontcluster" class="flex items-center gap-0.5 ml-0.5">
-            <p>GitHub</p>
-            <ArrowRight size={14} strokeWidth={2.5} />
+          <a href="https://github.com/MugiSus/fontcluster" class="flex items-center underline decoration-dashed underline-offset-[3px]">
+            GitHub
           </a>
         </div>
       </Show>
