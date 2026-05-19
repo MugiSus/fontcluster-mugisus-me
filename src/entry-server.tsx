@@ -8,7 +8,7 @@ export default createHandler(() => (
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>FontCluster</title>
+          <title>Download FontCluster</title>
           <meta name="description" content="Blazing-fast font discovery for designers of every level." />
           <meta property="og:title" content="FontCluster" />
           <meta property="og:description" content="Blazing-fast font discovery for designers of every level." />
