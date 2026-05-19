@@ -3,7 +3,7 @@ import { Show } from "solid-js";
 import { AppleIcon, ArrowRight, CpuIcon } from "lucide-solid";
 
 const fetchLatestRelease = query(async () => {
-  const response = await fetch("https://api.github.com/repos/MugiSus/fontcluster/releases/latest");
+  const response = await fetch("https://api.github.com/repos/MugiSus/fontcluster-releases/releases/latest");
   if (!response.ok) throw new Error("Failed to fetch latest release");
   return response.json();
 }, "latest-release");
