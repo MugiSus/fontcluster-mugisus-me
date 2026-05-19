@@ -29,12 +29,12 @@ export default function Home() {
         <Show when={latestRelease()} fallback={<div class="h-16 flex items-center justify-center text-slate-400 dark:text-zinc-500 italic">Checking for latest version...</div>}>
           <a
             href={getDmgUrl("aarch64")}
-            class="group w-full sm:w-1/2 flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
+            class="group w-full sm:w-1/2 flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
           >
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold uppercase mb-1">Download</span>
               <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Apple Silicon</span>
-              <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1">M1, M2, M3, M4, M5 series</span>
+              <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1.5">{latestRelease().tag_name}</span>
             </div>
             <div class="p-3 rounded-lg bg-slate-50 dark:bg-zinc-700/50 text-zinc-700 dark:text-white group-hover:bg-zinc-700 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-zinc-700 transition-colors duration-300">
               <AppleIcon size={24} />
@@ -56,17 +56,11 @@ export default function Home() {
           </a> */}
         </Show>
       </div>
-
-      <Show when={latestRelease()}>
+      {/* <Show when={latestRelease()}>
         <div class="flex flex-col items-center text-sm font-medium text-slate-400 dark:text-zinc-500">
-          <p>
             {latestRelease().tag_name}
-          </p>
-          <a href="https://github.com/MugiSus/fontcluster" class="flex items-center underline decoration-dashed underline-offset-[3px]">
-            GitHub
-          </a>
         </div>
-      </Show>
+      </Show> */}
     </main>
   );
 }
