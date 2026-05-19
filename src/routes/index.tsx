@@ -19,13 +19,13 @@ export default function Home() {
   };
 
   return (
-    <main class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-svh flex flex-col gap-12 items-center justify-center">
+    <main class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-svh flex flex-col gap-10 items-center justify-center">
       <div class="flex gap-4 items-center">
         <img src="/fontcluster-icon.png" alt="Logo" class="w-24 h-24 drop-shadow-md" />
         <img src="/fontcluster-text.png" alt="FontCluster" class="h-12 dark:invert drop-shadow-md" />
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-6 items-center justify-center w-full max-w-2xl px-4">
+      <div class="flex flex-col sm:flex-row gap-6 items-center justify-center w-full max-w-2xl px-4 mt-4">
         <Show when={latestRelease()} fallback={<div class="h-16 flex items-center justify-center text-slate-400 dark:text-zinc-500 italic">Checking for latest version...</div>}>
           <a
             href={getDmgUrl("aarch64")}
