@@ -15,8 +15,8 @@ export default createHandler(() => (
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://fontcluster.mugisus.me" />
           <meta property="og:image" content="https://fontcluster.mugisus.me/fontcluster-thumb.png" />
-          <meta property="og:image:width" content="2560" />
-          <meta property="og:image:height" content="1340" />
+          <meta property="og:image:width" content="1920" />
+          <meta property="og:image:height" content="1005" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Download FontCluster" />
           <meta name="twitter:description" content="Blazing-fast font discovery for designers of every level." />
