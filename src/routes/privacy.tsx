@@ -2,12 +2,8 @@ import { A } from "@solidjs/router";
 
 export default function Privacy() {
   return (
-    <main class="min-h-svh px-6 py-16 text-zinc-200 backdrop-blur-sm">
+    <main class="min-h-svh px-6 py-16 text-zinc-200 backdrop-blur-sm flex items-center justify-center-safe">
       <div class="mx-auto flex w-full max-w-2xl flex-col gap-10">
-        <A href="/" class="text-sm text-zinc-400 underline underline-offset-4">
-          Home
-        </A>
-
         <div class="flex flex-col gap-4">
           <h1 class="text-4xl font-semibold tracking-normal text-white">FontCluster Privacy Policy</h1>
           <p class="text-sm text-zinc-400">May 20, 2026</p>
@@ -82,6 +78,10 @@ export default function Privacy() {
             </p>
           </div>
         </section>
+
+        <A href="/" class="text-sm text-zinc-400 underline underline-offset-4">
+          {'←'} Home
+        </A>
       </div>
     </main>
   );
