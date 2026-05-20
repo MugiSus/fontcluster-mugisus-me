@@ -59,12 +59,12 @@ export default function Home() {
         </Show>
       </div>
       <div class="absolute bottom-6 text-sm font-regular text-zinc-500">
-        made with ♥ by{" "}
-        <a href="https://mugisus.me" target="_blank" rel="noopener noreferrer" class="underline">
+        Made with ♥ by{" "}
+        <a href="https://mugisus.me" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">
           mugisus
         </a>
         {' • '}
-        <A href="/privacy" class="underline">
+        <A href="/privacy" class="underline underline-offset-4">
           Privacy Policy
         </A>
       </div>
