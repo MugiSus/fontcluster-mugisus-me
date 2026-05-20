@@ -15,4 +15,8 @@
 body {
   background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));
+  background-image: url('/fontcluster-bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }

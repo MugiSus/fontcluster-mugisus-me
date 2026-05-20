@@ -1,4 +1,4 @@
-import { query, createAsync } from "@solidjs/router";
+import { query, createAsync, A } from "@solidjs/router";
 import { Show } from "solid-js";
 import { AppleIcon, ArrowRight, CpuIcon } from "lucide-solid";
 
@@ -20,13 +20,7 @@ export default function Home() {
 
   return (
     <main
-      class="text-center mx-auto p-4 bg-linear-to-b from-zinc-950 to-zinc-900 py-2 min-h-svh flex flex-col gap-4 items-center justify-center"
-      style={{
-        "background-image": "url('/fontcluster-bg.png')",
-        "background-size": "cover",
-        "background-position": "center top",
-        "background-repeat": "no-repeat",
-      }}
+      class="text-center mx-auto p-4 py-2 min-h-svh flex flex-col gap-4 items-center justify-center"
     >
       <div class="flex gap-4 items-center mr-4">
         <img src="/fontcluster-icon.png" alt="Logo" class="size-24 drop-shadow-md" />
@@ -64,11 +58,16 @@ export default function Home() {
           </a> */}
         </Show>
       </div>
-      {/* <Show when={latestRelease()}>
-        <div class="flex flex-col items-center text-sm font-medium text-slate-400 dark:text-zinc-500">
-            {latestRelease().tag_name}
-        </div>
-      </Show> */}
+      <div class="absolute bottom-6 text-sm font-regular text-zinc-500">
+        made with ♥ by{" "}
+        <a href="https://mugisus.me" target="_blank" rel="noopener noreferrer" class="underline">
+          mugisus
+        </a>
+        {' • '}
+        <A href="/privacy" class="underline">
+          Privacy Policy
+        </A>
+      </div>
     </main>
   );
 }
