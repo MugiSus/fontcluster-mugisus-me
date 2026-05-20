@@ -37,7 +37,7 @@ export default function Home() {
         <Show when={latestRelease()} fallback={<div class="h-16 flex items-center justify-center text-zinc-500 italic">Checking for latest version...</div>}>
           <a
             href={getDmgUrl("aarch64")}
-            class="group w-full sm:w-1/2 flex items-center justify-between p-4 rounded-2xl bg-zinc-800/50 border border-zinc-700 shadow-xs backdrop-blur-sm"
+            class="group max-w-full w-72 flex items-center justify-between p-4 rounded-2xl bg-zinc-800/50 border border-zinc-700 shadow-xs backdrop-blur-sm"
           >
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold uppercase mb-1">Download</span>
