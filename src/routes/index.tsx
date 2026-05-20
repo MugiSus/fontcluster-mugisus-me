@@ -1,44 +1,65 @@
-import { query, createAsync, A } from "@solidjs/router";
-import { Show } from "solid-js";
-import { AppleIcon, ArrowRight, CpuIcon } from "lucide-solid";
+import { query, createAsync, A } from '@solidjs/router';
+import { Show } from 'solid-js';
+import { AppleIcon } from 'lucide-solid';
 
 const fetchLatestRelease = query(async () => {
-  const response = await fetch("https://api.github.com/repos/MugiSus/fontcluster-releases/releases/latest");
-  if (!response.ok) throw new Error("Failed to fetch latest release");
+  const response = await fetch(
+    'https://api.github.com/repos/MugiSus/fontcluster-releases/releases/latest',
+  );
+  if (!response.ok) throw new Error('Failed to fetch latest release');
   return response.json();
-}, "latest-release");
+}, 'latest-release');
 
 export default function Home() {
   const latestRelease = createAsync(() => fetchLatestRelease());
 
-  const getDmgUrl = (arch: "aarch64" | "x64") => {
+  const getDmgUrl = (arch: 'aarch64' | 'x64') => {
     const release = latestRelease();
-    if (!release) return "#";
-    const asset = release.assets.find((a: any) => a.name.endsWith(`${arch}.dmg`));
-    return asset?.browser_download_url || "#";
+    if (!release) return '#';
+    const asset = release.assets.find((a: any) =>
+      a.name.endsWith(`${arch}.dmg`),
+    );
+    return asset?.browser_download_url || '#';
   };
 
   return (
-    <main
-      class="text-center mx-auto p-4 py-2 min-h-svh flex flex-col gap-4 items-center justify-center"
-    >
-      <div class="flex gap-4 items-center mr-4">
-        <img src="/fontcluster-icon.png" alt="Logo" class="size-24 drop-shadow-md" />
-        <img src="/fontcluster-text.png" alt="FontCluster" class="h-9 invert drop-shadow-md" />
+    <main class='mx-auto flex min-h-svh flex-col items-center justify-center gap-4 p-4 py-2 text-center'>
+      <div class='mr-4 flex items-center gap-4'>
+        <img
+          src='/fontcluster-icon.png'
+          alt='Logo'
+          class='size-24 drop-shadow-md'
+        />
+        <img
+          src='/fontcluster-text.png'
+          alt='FontCluster'
+          class='h-9 drop-shadow-md invert'
+        />
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-6 items-center justify-center w-full max-w-2xl px-4 mt-4">
-        <Show when={latestRelease()} fallback={<div class="h-16 flex items-center justify-center text-zinc-500 italic">Checking for latest version...</div>}>
-          <a
-            href={getDmgUrl("aarch64")}
-            class="group max-w-full w-72 flex items-center justify-between p-4 rounded-2xl bg-zinc-800/50 border border-zinc-700 shadow-xs backdrop-blur-sm"
-          >
-            <div class="flex flex-col items-start text-left">
-              <span class="text-[10px] font-bold uppercase mb-1">Download</span>
-              <span class="text-lg font-bold text-white leading-tight">Apple Silicon</span>
-              <span class="text-xs text-zinc-400 mt-1.5">{latestRelease().tag_name}</span>
+      <div class='mt-4 flex w-full max-w-2xl flex-col items-center justify-center gap-6 px-4 sm:flex-row'>
+        <Show
+          when={latestRelease()}
+          fallback={
+            <div class='flex h-16 items-center justify-center text-zinc-500 italic'>
+              Checking for latest version...
             </div>
-            <div class="p-3 rounded-lg bg-zinc-700/50 text-white group-hover:bg-white group-hover:text-zinc-700 transition-colors duration-300">
+          }
+        >
+          <a
+            href={getDmgUrl('aarch64')}
+            class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-800/50 p-4 shadow-xs backdrop-blur-sm'
+          >
+            <div class='flex flex-col items-start text-left'>
+              <span class='mb-1 text-[10px] font-bold uppercase'>Download</span>
+              <span class='text-lg leading-tight font-bold text-white'>
+                Apple Silicon
+              </span>
+              <span class='mt-1.5 text-xs text-zinc-400'>
+                {latestRelease().tag_name}
+              </span>
+            </div>
+            <div class='rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-zinc-700'>
               <AppleIcon size={24} />
             </div>
           </a>
@@ -58,13 +79,18 @@ export default function Home() {
           </a> */}
         </Show>
       </div>
-      <div class="absolute bottom-6 text-sm font-regular text-zinc-500">
-        Made with ♥ by{" "}
-        <a href="https://mugisus.me" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">
+      <div class='font-regular absolute bottom-6 text-sm text-zinc-500'>
+        Made with ♥ by{' '}
+        <a
+          href='https://mugisus.me'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='underline underline-offset-4'
+        >
           mugisus
         </a>
         {' • '}
-        <A href="/privacy" class="underline underline-offset-4">
+        <A href='/privacy' class='underline underline-offset-4'>
           Privacy Policy
         </A>
       </div>
