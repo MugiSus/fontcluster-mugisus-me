@@ -2,12 +2,22 @@ import { query, createAsync, A } from '@solidjs/router';
 import { Show } from 'solid-js';
 import { AppleIcon } from 'lucide-solid';
 
+type ReleaseAsset = {
+  name: string;
+  browser_download_url: string;
+};
+
+type LatestRelease = {
+  tag_name: string;
+  assets: ReleaseAsset[];
+};
+
 const fetchLatestRelease = query(async () => {
   const response = await fetch(
     'https://api.github.com/repos/MugiSus/fontcluster-releases/releases/latest',
   );
   if (!response.ok) throw new Error('Failed to fetch latest release');
-  return response.json();
+  return response.json() as Promise<LatestRelease>;
 }, 'latest-release');
 
 export default function Home() {
@@ -16,9 +26,7 @@ export default function Home() {
   const getDmgUrl = (arch: 'aarch64' | 'x64') => {
     const release = latestRelease();
     if (!release) return '#';
-    const asset = release.assets.find((a: any) =>
-      a.name.endsWith(`${arch}.dmg`),
-    );
+    const asset = release.assets.find((a) => a.name.endsWith(`${arch}.dmg`));
     return asset?.browser_download_url || '#';
   };
 
@@ -56,7 +64,7 @@ export default function Home() {
                 Apple Silicon
               </span>
               <span class='mt-1.5 text-xs text-zinc-400'>
-                {latestRelease().tag_name}
+                {latestRelease()?.tag_name}
               </span>
             </div>
             <div class='rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-zinc-700'>
