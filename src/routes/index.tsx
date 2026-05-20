@@ -19,17 +19,25 @@ export default function Home() {
   };
 
   return (
-    <main class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-svh flex flex-col gap-10 items-center justify-center">
-      <div class="flex gap-4 items-center">
-        <img src="/fontcluster-icon.png" alt="Logo" class="w-24 h-24 drop-shadow-md" />
-        <img src="/fontcluster-text.png" alt="FontCluster" class="h-12 dark:invert drop-shadow-md" />
+    <main
+      class="text-center mx-auto p-4 bg-linear-to-b from-slate-50 to-slate-100 py-2 dark:from-zinc-950 dark:to-zinc-900 min-h-svh flex flex-col gap-4 items-center justify-center"
+      style={{
+        "background-image": "url('/fontcluster-bg.png')",
+        "background-size": "cover",
+        "background-position": "center top",
+        "background-repeat": "no-repeat",
+      }}
+    >
+      <div class="flex gap-4 items-center mr-4">
+        <img src="/fontcluster-icon.png" alt="Logo" class="size-24 drop-shadow-md" />
+        <img src="/fontcluster-text.png" alt="FontCluster" class="h-9 dark:invert drop-shadow-md" />
       </div>
 
       <div class="flex flex-col sm:flex-row gap-6 items-center justify-center w-full max-w-2xl px-4 mt-4">
         <Show when={latestRelease()} fallback={<div class="h-16 flex items-center justify-center text-slate-400 dark:text-zinc-500 italic">Checking for latest version...</div>}>
           <a
             href={getDmgUrl("aarch64")}
-            class="group w-full sm:w-1/2 flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
+            class="group w-full sm:w-1/2 flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700 shadow-xs backdrop-blur-sm"
           >
             <div class="flex flex-col items-start text-left">
               <span class="text-[10px] font-bold uppercase mb-1">Download</span>
