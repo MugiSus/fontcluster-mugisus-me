@@ -1,6 +1,6 @@
 import { query, createAsync, A } from '@solidjs/router';
 import { Show } from 'solid-js';
-import { AppleIcon } from 'lucide-solid';
+import { DownloadIcon } from 'lucide-solid';
 
 type ReleaseAsset = {
   name: string;
@@ -31,8 +31,8 @@ export default function Home() {
   };
 
   return (
-    <main class='mx-auto flex min-h-svh flex-col items-center justify-center gap-4 p-4 py-2 text-center'>
-      <div class='mr-4 flex items-center gap-4'>
+    <main class='mx-auto flex min-h-svh flex-col items-center justify-center gap-16 p-4 py-2 text-center'>
+      <div class='flex flex-col items-center gap-4'>
         <img
           src='/fontcluster-icon.png'
           alt='Logo'
@@ -41,7 +41,7 @@ export default function Home() {
         <img
           src='/fontcluster-text.png'
           alt='FontCluster'
-          class='h-9 drop-shadow-md invert'
+          class='h-8 drop-shadow-md invert'
         />
       </div>
 
@@ -56,7 +56,7 @@ export default function Home() {
         >
           <a
             href={getDmgUrl('aarch64')}
-            class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-800/50 p-4 shadow-xs backdrop-blur-sm'
+            class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-950/30 p-4 shadow-xs backdrop-blur-sm'
           >
             <div class='flex flex-col items-start text-left'>
               <span class='mb-1 text-[10px] font-bold uppercase'>Download</span>
@@ -68,7 +68,7 @@ export default function Home() {
               </span>
             </div>
             <div class='rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-zinc-700'>
-              <AppleIcon size={24} />
+              <DownloadIcon size={24} />
             </div>
           </a>
 
