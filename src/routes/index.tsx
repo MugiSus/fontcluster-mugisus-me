@@ -1,6 +1,11 @@
 import { query, createAsync, A } from '@solidjs/router';
 import { For, Show } from 'solid-js';
-import { Apple, Grid2x2, Terminal } from 'lucide-solid';
+import {
+  Apple,
+  Grid2x2,
+  SquareArrowOutUpRightIcon,
+  Terminal,
+} from 'lucide-solid';
 
 type ReleaseAsset = {
   name: string;
@@ -39,37 +44,23 @@ export default function Home() {
 
   const downloads = () => [
     {
-      label: 'MacOS',
-      detail: 'Apple Silicon',
+      label: 'Apple Silicon',
+      detail: '.dmg',
       href: getDownloadUrl(['aarch64.dmg']),
       Icon: Apple,
       iconClass: 'group-hover:bg-rose-400',
     },
     {
       label: 'Windows',
-      detail: 'Installer',
-      href: getDownloadUrl(['.msi', '.exe']),
+      detail: '.msi',
+      href: getDownloadUrl(['.msi']),
       Icon: Grid2x2,
       iconClass: 'group-hover:bg-sky-500',
     },
     {
       label: 'Linux',
-      detail: 'AppImage',
+      detail: '.AppImage',
       href: getDownloadUrl(['.appimage']),
-      Icon: Terminal,
-      iconClass: 'group-hover:bg-emerald-500',
-    },
-    {
-      label: 'Debian',
-      detail: 'Deb package',
-      href: getDownloadUrl(['.deb']),
-      Icon: Terminal,
-      iconClass: 'group-hover:bg-pink-500',
-    },
-    {
-      label: 'Fedora',
-      detail: 'RPM package',
-      href: getDownloadUrl(['.rpm']),
       Icon: Terminal,
       iconClass: 'group-hover:bg-emerald-500',
     },
@@ -90,7 +81,7 @@ export default function Home() {
         />
       </div>
 
-      <div class='mt-4 flex w-full max-w-5xl flex-col items-center justify-center gap-3 px-4 sm:flex-row sm:flex-wrap'>
+      <div class='flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap'>
         <Show
           when={latestRelease()}
           fallback={
@@ -120,14 +111,24 @@ export default function Home() {
                 <div
                   class={`rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 ${download.iconClass}`}
                 >
-                  <download.Icon size={24} />
+                  <download.Icon size={20} />
                 </div>
               </a>
             )}
           </For>
         </Show>
       </div>
-      <div class='font-regular text-sm text-zinc-500'>
+
+      <a
+        href='https://github.com/MugiSus/fontcluster-releases/releases/latest'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='text-sm text-zinc-400 underline underline-offset-4 transition-colors hover:text-white'
+      >
+        More downloads
+        <SquareArrowOutUpRightIcon size={14} class='ml-1 inline' />
+      </a>
+      <div class='font-regular text-sm text-zinc-400'>
         Made with ♥ by{' '}
         <a
           href='https://mugisus.me'
