@@ -1,6 +1,6 @@
 import { query, createAsync, A } from '@solidjs/router';
-import { Show } from 'solid-js';
-import { DownloadIcon } from 'lucide-solid';
+import { For, Show } from 'solid-js';
+import { Apple, Grid2x2, Terminal } from 'lucide-solid';
 
 type ReleaseAsset = {
   name: string;
@@ -23,15 +23,60 @@ const fetchLatestRelease = query(async () => {
 export default function Home() {
   const latestRelease = createAsync(() => fetchLatestRelease());
 
-  const getDmgUrl = (arch: 'aarch64' | 'x64') => {
+  const getDownloadUrl = (extensions: string[]) => {
     const release = latestRelease();
     if (!release) return '#';
-    const asset = release.assets.find((a) => a.name.endsWith(`${arch}.dmg`));
+    const asset = extensions
+      .map((extension) =>
+        release.assets.find((a) => {
+          const assetName = a.name.toLowerCase();
+          return !assetName.endsWith('.sig') && assetName.endsWith(extension);
+        }),
+      )
+      .find((a) => a);
     return asset?.browser_download_url || '#';
   };
 
+  const downloads = () => [
+    {
+      label: 'MacOS',
+      detail: 'Apple Silicon',
+      href: getDownloadUrl(['aarch64.dmg']),
+      Icon: Apple,
+      iconClass: 'group-hover:bg-rose-400',
+    },
+    {
+      label: 'Windows',
+      detail: 'Installer',
+      href: getDownloadUrl(['.msi', '.exe']),
+      Icon: Grid2x2,
+      iconClass: 'group-hover:bg-sky-500',
+    },
+    {
+      label: 'Linux',
+      detail: 'AppImage',
+      href: getDownloadUrl(['.appimage']),
+      Icon: Terminal,
+      iconClass: 'group-hover:bg-emerald-500',
+    },
+    {
+      label: 'Debian',
+      detail: 'Deb package',
+      href: getDownloadUrl(['.deb']),
+      Icon: Terminal,
+      iconClass: 'group-hover:bg-pink-500',
+    },
+    {
+      label: 'Fedora',
+      detail: 'RPM package',
+      href: getDownloadUrl(['.rpm']),
+      Icon: Terminal,
+      iconClass: 'group-hover:bg-emerald-500',
+    },
+  ];
+
   return (
-    <main class='mx-auto flex min-h-svh flex-col items-center justify-center gap-16 p-4 py-2 text-center'>
+    <main class='mx-auto flex min-h-svh flex-col items-center justify-center-safe gap-16 p-4 py-24 text-center'>
       <div class='flex flex-col items-center gap-4'>
         <img
           src='/fontcluster-icon.png'
@@ -45,7 +90,7 @@ export default function Home() {
         />
       </div>
 
-      <div class='mt-4 flex w-full max-w-2xl flex-col items-center justify-center gap-6 px-4 sm:flex-row'>
+      <div class='mt-4 flex w-full max-w-5xl flex-col items-center justify-center gap-3 px-4 sm:flex-row sm:flex-wrap'>
         <Show
           when={latestRelease()}
           fallback={
@@ -54,40 +99,35 @@ export default function Home() {
             </div>
           }
         >
-          <a
-            href={getDmgUrl('aarch64')}
-            class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-950/30 p-4 shadow-xs backdrop-blur-sm'
-          >
-            <div class='flex flex-col items-start text-left'>
-              <span class='mb-1 text-[10px] font-bold uppercase'>Download</span>
-              <span class='text-lg leading-tight font-bold text-white'>
-                Apple Silicon
-              </span>
-              <span class='mt-1.5 text-xs text-zinc-400'>
-                {latestRelease()?.tag_name}
-              </span>
-            </div>
-            <div class='rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-zinc-700'>
-              <DownloadIcon size={24} />
-            </div>
-          </a>
-
-          {/* <a
-            href={getDmgUrl("x64")}
-            class="group w-full sm:w-1/2 flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 shadow-xs backdrop-blur-sm"
-          >
-            <div class="flex flex-col items-start text-left">
-              <span class="text-[10px] font-bold text-emerald-500 dark:text-emerald-400 uppercase mb-1">Download</span>
-              <span class="text-lg font-bold text-slate-800 dark:text-white leading-tight">Intel Chip</span>
-              <span class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Other Mac models</span>
-            </div>
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-zinc-700/50 text-slate-600 dark:text-white group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-100">
-              <CpuIcon size={24} />
-            </div>
-          </a> */}
+          <For each={downloads()}>
+            {(download) => (
+              <a
+                href={download.href}
+                aria-disabled={download.href === '#'}
+                class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-950/30 p-4 shadow-xs backdrop-blur-sm'
+              >
+                <div class='flex flex-col items-start text-left'>
+                  <span class='mb-1 text-[10px] font-bold uppercase'>
+                    Download
+                  </span>
+                  <span class='text-lg leading-tight font-bold text-white'>
+                    {download.label}
+                  </span>
+                  <span class='mt-1.5 text-xs text-zinc-400'>
+                    {latestRelease()?.tag_name} · {download.detail}
+                  </span>
+                </div>
+                <div
+                  class={`rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 ${download.iconClass}`}
+                >
+                  <download.Icon size={24} />
+                </div>
+              </a>
+            )}
+          </For>
         </Show>
       </div>
-      <div class='font-regular absolute bottom-6 text-sm text-zinc-500'>
+      <div class='font-regular text-sm text-zinc-500'>
         Made with ♥ by{' '}
         <a
           href='https://mugisus.me'
