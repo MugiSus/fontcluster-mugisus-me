@@ -3,7 +3,7 @@ import { A } from '@solidjs/router';
 export default function Privacy() {
   return (
     <main class='flex min-h-svh items-center justify-center-safe px-6 py-16 text-zinc-200 backdrop-blur-sm'>
-      <div class='mx-auto flex w-full max-w-2xl flex-col gap-10'>
+      <div class='mx-auto flex w-full max-w-xl flex-col gap-10'>
         <div class='flex flex-col gap-4'>
           <h1 class='text-4xl font-semibold tracking-normal text-white'>
             FontCluster Privacy Policy
