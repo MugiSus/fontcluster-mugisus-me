@@ -2,7 +2,6 @@ import { query, createAsync, A } from '@solidjs/router';
 import { For, Show } from 'solid-js';
 import {
   Apple,
-  DownloadIcon,
   Grid2x2,
   SquareArrowOutUpRightIcon,
   Terminal,
@@ -139,15 +138,16 @@ export default function Home() {
           >
             .deb {latestRelease()?.tag_name}
           </a>
-          {/* <a
-          href='https://github.com/MugiSus/fontcluster-releases/releases/latest'
-          target='_blank'
-          rel='noopener noreferrer'
-          class='underline underline-offset-4'
-        >
-          GitHub Releases
-          <SquareArrowOutUpRightIcon size={14} class='ml-1 inline' />
-        </a> */}
+          <span>•</span>
+          <a
+            href='https://github.com/MugiSus/fontcluster-releases/releases/latest'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='underline underline-offset-4 transition-colors hover:text-white'
+          >
+            GitHub Releases
+            <SquareArrowOutUpRightIcon size={14} class='ml-1 inline' />
+          </a>
         </div>
       </div>
 
