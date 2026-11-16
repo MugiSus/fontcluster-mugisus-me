@@ -3,6 +3,7 @@ import { For, Show } from 'solid-js';
 import {
   Apple,
   Dices,
+  Download,
   Grid2x2,
   SquareArrowOutUpRightIcon,
   Terminal,
@@ -103,13 +104,16 @@ export default function Home() {
             {(download) => (
               <a
                 href={download.href}
+                aria-label={`Download FontCluster for ${download.label}`}
                 aria-disabled={download.href === '#'}
-                class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-500 bg-zinc-950/60 p-4 backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
+                class='group flex w-60 max-w-full items-center justify-between gap-3 rounded-2xl border border-zinc-500 bg-zinc-950/60 p-4 backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
               >
-                <div class='flex flex-col items-start text-left'>
-                  <span class='mb-1 text-[10px] font-bold uppercase'>
-                    Download
-                  </span>
+                <Download
+                  size={20}
+                  class='shrink-0 text-white'
+                  aria-hidden='true'
+                />
+                <div class='flex flex-1 flex-col items-start text-left'>
                   <span class='text-lg leading-tight font-bold text-white'>
                     {download.label}
                   </span>
@@ -118,7 +122,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div
-                  class={`rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 ${download.iconClass}`}
+                  class={`shrink-0 rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 ${download.iconClass}`}
                 >
                   <download.Icon size={20} />
                 </div>
