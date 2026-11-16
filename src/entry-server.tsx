@@ -11,12 +11,12 @@ export default createHandler(() => (
           <title>FontCluster</title>
           <meta
             name='description'
-            content='Blazing-fast font discovery for designers of every level.'
+            content='Explore fonts by visual similarity with FontCluster, a desktop app for macOS, Windows, and Linux.'
           />
           <meta property='og:title' content='Download FontCluster' />
           <meta
             property='og:description'
-            content='Blazing-fast font discovery for designers of every level.'
+            content='Explore fonts by visual similarity with FontCluster, a desktop app for macOS, Windows, and Linux.'
           />
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://fontcluster.mugisus.me' />
@@ -30,7 +30,7 @@ export default createHandler(() => (
           <meta name='twitter:title' content='Download FontCluster' />
           <meta
             name='twitter:description'
-            content='Blazing-fast font discovery for designers of every level.'
+            content='Explore fonts by visual similarity with FontCluster, a desktop app for macOS, Windows, and Linux.'
           />
           <meta
             name='twitter:image'

@@ -2,6 +2,7 @@ import { query, createAsync, A } from '@solidjs/router';
 import { For, Show } from 'solid-js';
 import {
   Apple,
+  Dices,
   Grid2x2,
   SquareArrowOutUpRightIcon,
   Terminal,
@@ -68,7 +69,7 @@ export default function Home() {
 
   return (
     <main class='mx-auto flex min-h-svh flex-col items-center justify-center-safe gap-16 p-4 py-24 text-center'>
-      <div class='mb-8 flex flex-col items-center gap-4'>
+      <div class='flex flex-col items-center gap-4'>
         <img
           src='/fontcluster-icon.png'
           alt='Logo'
@@ -80,6 +81,14 @@ export default function Home() {
           class='h-8 drop-shadow-md invert'
         />
       </div>
+
+      <a
+        href='https://fontcluster-webview.vercel.app/'
+        class='inline-flex items-center gap-2 rounded-full border border-zinc-500 bg-zinc-950/60 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
+      >
+        <Dices size={20} aria-hidden='true' />
+        Quick Demo →
+      </a>
 
       <div class='flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap'>
         <Show
@@ -95,7 +104,7 @@ export default function Home() {
               <a
                 href={download.href}
                 aria-disabled={download.href === '#'}
-                class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-700 bg-zinc-950/30 p-4 shadow-xs backdrop-blur-sm'
+                class='group flex w-72 max-w-full items-center justify-between rounded-2xl border border-zinc-500 bg-zinc-950/60 p-4 backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
               >
                 <div class='flex flex-col items-start text-left'>
                   <span class='mb-1 text-[10px] font-bold uppercase'>
