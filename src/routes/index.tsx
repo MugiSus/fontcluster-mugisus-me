@@ -84,7 +84,7 @@ export default function Home() {
       </div>
 
       <a
-        href='https://fontcluster-webview.vercel.app/'
+        href='https://fontcluster.mugisus.me/demo'
         class='inline-flex items-center gap-2 rounded-full border border-zinc-500 bg-zinc-950/60 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
       >
         <Dices size={20} aria-hidden='true' />
