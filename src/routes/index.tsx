@@ -83,55 +83,53 @@ export default function Home() {
         />
       </div>
 
-      <div class='flex flex-col items-center gap-3'>
-        <a
-          href='https://fontcluster-webview.vercel.app/'
-          class='inline-flex h-12.5 w-48 items-center justify-center gap-2 rounded-full border border-zinc-500 bg-zinc-950/60 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
-        >
-          <Dices size={20} aria-hidden='true' />
-          Quick Demo →
-        </a>
+      <a
+        href='https://fontcluster-webview.vercel.app/'
+        class='inline-flex items-center gap-2 rounded-full border border-zinc-500 bg-zinc-950/60 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
+      >
+        <Dices size={20} aria-hidden='true' />
+        Quick Demo →
+      </a>
 
-        <div class='flex flex-col items-center gap-3'>
-          <Show
-            when={latestRelease()}
-            fallback={
-              <div class='flex h-16 items-center justify-center text-zinc-500 italic'>
-                Checking for latest version...
-              </div>
-            }
-          >
-            <For each={downloads()}>
-              {(download) => (
-                <a
-                  href={download.href}
-                  aria-label={`Download FontCluster for ${download.label}`}
-                  aria-disabled={download.href === '#'}
-                  class='group flex h-12.5 w-48 items-center justify-between gap-2 rounded-2xl border border-zinc-500 bg-zinc-950/60 px-3 backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
+      <div class='flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap'>
+        <Show
+          when={latestRelease()}
+          fallback={
+            <div class='flex h-16 items-center justify-center text-zinc-500 italic'>
+              Checking for latest version...
+            </div>
+          }
+        >
+          <For each={downloads()}>
+            {(download) => (
+              <a
+                href={download.href}
+                aria-label={`Download FontCluster for ${download.label}`}
+                aria-disabled={download.href === '#'}
+                class='group flex w-60 max-w-full items-center justify-between gap-3 rounded-2xl border border-zinc-500 bg-zinc-950/60 p-4 backdrop-blur-sm transition-colors hover:border-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white'
+              >
+                <Download
+                  size={20}
+                  class='shrink-0 text-white'
+                  aria-hidden='true'
+                />
+                <div class='flex flex-1 flex-col items-start text-left'>
+                  <span class='text-lg leading-tight font-bold text-white'>
+                    {download.label}
+                  </span>
+                  <span class='mt-1.5 text-xs text-zinc-400'>
+                    {latestRelease()?.tag_name} · {download.detail}
+                  </span>
+                </div>
+                <div
+                  class={`shrink-0 rounded-lg bg-zinc-700/50 p-3 text-white transition-colors duration-300 ${download.iconClass}`}
                 >
-                  <Download
-                    size={20}
-                    class='shrink-0 text-white'
-                    aria-hidden='true'
-                  />
-                  <div class='flex flex-1 flex-col items-start text-left'>
-                    <span class='text-sm leading-5 font-medium text-white'>
-                      {download.label}
-                    </span>
-                    <span class='text-[10px] leading-3 text-zinc-400'>
-                      {latestRelease()?.tag_name} · {download.detail}
-                    </span>
-                  </div>
-                  <div
-                    class={`shrink-0 rounded-lg bg-zinc-700/50 p-1 text-white transition-colors duration-300 ${download.iconClass}`}
-                  >
-                    <download.Icon size={20} />
-                  </div>
-                </a>
-              )}
-            </For>
-          </Show>
-        </div>
+                  <download.Icon size={20} />
+                </div>
+              </a>
+            )}
+          </For>
+        </Show>
       </div>
 
       <div class='flex items-center gap-1 text-sm text-zinc-400'>
